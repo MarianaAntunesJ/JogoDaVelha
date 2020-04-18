@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmorJogoVelha
+namespace JogoDaVelha
 {
     class Tabuleiro
     {
@@ -30,13 +30,27 @@ namespace AmorJogoVelha
         public void PreencherCasa(string posicao, char jogador)
         {
             TrataPosicao(posicao, out int linha, out int coluna);
-
+            _casas[linha, coluna] = jogador;
         }
 
         private void TrataPosicao(string posicaoEntrada, out int linha, out int coluna)
         {
-            char[] vetPosicao = posicaoEntrada.ToCharArray();
-            if(vetPosicao.Length)
+            char[] vetPosicao = posicaoEntrada.ToUpper().ToCharArray();
+            var soma = (int)vetPosicao[0] + (int)vetPosicao[1];
+            if (vetPosicao.Length != 2)
+                throw new ArgumentException();
+            if (soma < 'A' + '1' || soma > 'C' + '3')
+                throw new ArgumentException();
+            if ((int)vetPosicao[0] > '3')
+            {
+                linha = (int)vetPosicao[0] - 'A';
+                coluna = vetPosicao[1] - '1';
+            }
+            else
+            {
+                linha = (int)vetPosicao[1] - 'A';
+                coluna = vetPosicao[0] - '1';
+            }
         }
     }
 }

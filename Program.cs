@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AmorJogoVelha
+namespace JogoDaVelha
 {
     class Program
     {
@@ -8,8 +8,10 @@ namespace AmorJogoVelha
         {
             Tabuleiro tabuleiro = new Tabuleiro();
             tabuleiro.ExibirTabu();
-            var a = "1a";
-            tabuleiro.PreencherCasa(A1, X);
+            tabuleiro.PreencherCasa("A1", 'X');
+            tabuleiro.ExibirTabu();
+            tabuleiro.PreencherCasa("3c", 'O');
+            tabuleiro.ExibirTabu();
         }
     }
 }
