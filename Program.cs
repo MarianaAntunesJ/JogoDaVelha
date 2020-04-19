@@ -6,12 +6,8 @@ namespace JogoDaVelha
     {
         static void Main(string[] args)
         {
-            Tabuleiro tabuleiro = new Tabuleiro();
-            tabuleiro.ExibirTabu();
-            tabuleiro.PreencherCasa("A1", 'X');
-            tabuleiro.ExibirTabu();
-            tabuleiro.PreencherCasa("3c", 'O');
-            tabuleiro.ExibirTabu();
+            Jogo jogo = new Jogo();
+            jogo.IniciarJogo();
         }
     }
 }
