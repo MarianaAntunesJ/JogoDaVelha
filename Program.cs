@@ -7,7 +7,29 @@ namespace JogoDaVelha
         static void Main(string[] args)
         {
             Jogo jogo = new Jogo();
-            jogo.IniciarJogo();
+            char opcao;
+            do
+            {
+                Console.Clear();
+                jogo.IniciarJogo();
+                while (true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Deseja finalizar jogo? (S)Sim; (N)Não.");
+                        opcao = char.Parse(Console.ReadLine());
+                        break;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Opção inválida, tente novamente");
+                    } 
+                }
+            } while (opcao != 'S');
+            Console.Clear();
+            Console.WriteLine($"\nRESULTADO FINAL:" +
+                              $"\nJogador X = {jogo.VitoriasX}" +
+                              $"\nJogador O = {jogo.VitoriasO}");
         }
     }
 }
