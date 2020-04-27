@@ -4,13 +4,15 @@ namespace JogoDaVelha
 {
     class Jogo
     {
-        private Tabuleiro _tabuleiro = new Tabuleiro();
+        private Tabuleiro _tabuleiro;
         public int VitoriasX { get; private set; } = 0;
         public int VitoriasO { get; private set; } = 0;
 
+        private readonly char[] jogadores = new char[] { 'X', 'O' };
+
         public void IniciarJogo()
         {
-            char[] jogadores = new char[] {'X', 'O'};
+            _tabuleiro = new Tabuleiro();
             char jogador;
             int posicao = 0;
             while (true)
@@ -20,7 +22,7 @@ namespace JogoDaVelha
                 if (_tabuleiro.VerificarVitoria(jogador))
                 {
                     _tabuleiro.ExibirTabu();
-                    Console.WriteLine($"Vitória do jogador {jogador}!");
+                    ExibirVitoria(jogador);
                     AdicionarVitoria(jogador);
                     break;
                 }
@@ -67,6 +69,16 @@ namespace JogoDaVelha
                     mensagemErro = ($"Jogada invalida!");
                 }
             } while (true);
+        }
+
+        private void ExibirVitoria(char jogador)
+        {
+            if(jogador == 'X')
+                Console.ForegroundColor = ConsoleColor.Red;
+            else
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Vitória do jogador {jogador}!");
+            Console.ResetColor();
         }
 
         private void Exibir(char jogador, string mensagemErro)

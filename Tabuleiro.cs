@@ -18,13 +18,50 @@ namespace JogoDaVelha
         public void ExibirTabu()
         {
             Console.WriteLine("\n " + new string('_', 15) + "\n");
-            Console.WriteLine($"|    1   2   3  |\n" +
-                              $"| A  {_casas[0, 0]} | {_casas[0, 1]} | {_casas[0, 2]}  |\n" +
-                              $"|   ----------- |\n" +
-                              $"| B  {_casas[1, 0]} | {_casas[1, 1]} | {_casas[1, 2]}  |\n" +
-                              $"|   ----------- |\n" +
-                              $"| C  {_casas[2, 0]} | {_casas[2, 1]} | {_casas[2, 2]}  |");
-            Console.WriteLine(" " + new string('_', 15)+ "\n");
+            Console.WriteLine($"|    1   2   3  |");
+            ExibirLinhas('A', 0);
+            Console.WriteLine("\n|   ----------- |");
+            ExibirLinhas('B', 1);
+            Console.WriteLine("\n|   ----------- |");
+            ExibirLinhas('C', 2);
+            Console.WriteLine("\n " + new string('_', 15) + "\n");
+        }
+
+        private void ExibirLinhas(char letra, int linha)
+        {
+            ExibirColuna(letra);
+            for(int i = 0; i < 3; i++)
+            {
+                ExibirCasas(linha, i);
+                if(i < 2)
+                    ExibirPipe();
+                else
+                    ExibirPipe(" ");
+            } 
+        }
+
+        private void ExibirPipe(string op = "") => Console.Write($"{op} | ");
+
+        private void ExibirColuna(char letra) => Console.Write($"| {letra}  ");
+
+        private void ExibirCasas(int linha, int coluna)
+        {
+            if(_casas[linha, coluna] == ' ')
+            {
+                Console.Write(_casas[linha, coluna]);
+                return;
+            }
+            if(_casas[linha, coluna] == 'X')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(_casas[linha, coluna]);
+            }
+            else if (_casas[linha, coluna] == 'O')
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(_casas[linha, coluna]);
+            }
+            Console.ResetColor();
         }
 
         public void PreencherCasa(string posicao, char jogador)
