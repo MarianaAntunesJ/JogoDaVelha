@@ -1,0 +1,3 @@
+* adicionarVitoria : colocar contador de velha;
+* mudar pergunta "Deseja finalizar jogo";
+* exibir placa a cada partida;

@@ -64,7 +64,7 @@ namespace JogoDaVelha
                 {
                     mensagemErro = ($"Jogada invalida! {e.Message}");
                 }
-                catch (Exception)
+                catch
                 {
                     mensagemErro = ($"Jogada invalida!");
                 }
@@ -86,7 +86,7 @@ namespace JogoDaVelha
             Console.WriteLine("PARTIDA INICIADA");
             _tabuleiro.ExibirTabu();
             Console.WriteLine(mensagemErro);
-            Console.Write($"Vez do jogador {jogador}, digite a posição: ");
+            Console.Write($"Vez do jogador {jogador}, digite a posição (ex: a3): ");
         }
     }
 }
